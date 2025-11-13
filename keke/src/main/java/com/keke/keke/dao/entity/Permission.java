@@ -7,6 +7,8 @@ import org.hibernate.annotations.SQLDelete;
 // import org.hibernate.annotations.Where;
 import org.hibernate.annotations.Where;
 
+import com.keke.keke.constant.RoleTypeEnum;
+
 
 @Getter
 @Setter

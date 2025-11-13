@@ -1,6 +1,7 @@
 package com.keke.keke.security;
 
 
+import com.keke.keke.config.AppProperties;
 import com.keke.keke.exception.UnauthorizedException;
 import com.nimbusds.jose.shaded.gson.JsonObject;
 
