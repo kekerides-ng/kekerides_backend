@@ -32,8 +32,8 @@ public class OpenApiConfig {
                         .description("API for auth and user operations")
                         .contact(new Contact()
                                 .name("API Support")
-                                .email("Support@novastar.com")
-                                .url("https://www.novastar.com"))
+                                .email("Support@kekerider.com")
+                                .url("https://www.kekerider.com"))
                         .license(new License()
                                 .name("Apache 2.0")
                                 .url("https://springdoc.org")))
@@ -48,7 +48,7 @@ public class OpenApiConfig {
         return GroupedOpenApi.builder()
                 .group("auth-service")
                 .pathsToMatch("/api/v1/auth/**")
-                .packagesToScan("com.keke.controller")
+                .packagesToScan("com.keke.keke.controller")
                 .build();
     }
 
@@ -57,7 +57,7 @@ public class OpenApiConfig {
         return GroupedOpenApi.builder()
                 .group("user-service")
                 .pathsToMatch("/api/v1/users/**")
-                .packagesToScan("com.keke.controller")
+                .packagesToScan("com.keke.keke.controller")
                 .build();
     }
 

@@ -17,7 +17,7 @@ import com.keke.keke.constant.RoleTypeEnum;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "permissions", schema = "esim")
+@Table(name = "permissions")
 @Where(clause="deleted=false")
 @SQLDelete(sql="UPDATE permissions SET deleted=true WHERE id=?")
 public class Permission extends BaseEntity {

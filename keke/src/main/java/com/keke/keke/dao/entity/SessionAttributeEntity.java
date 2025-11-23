@@ -1,5 +1,5 @@
-package com.keke.keke.dao.entity;
+// package com.keke.keke.dao.entity;
 
-public class SessionAttributeEntity {
+// public class SessionAttributeEntity {
 
-}
+// }

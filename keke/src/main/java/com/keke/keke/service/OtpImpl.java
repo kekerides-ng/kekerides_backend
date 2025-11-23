@@ -41,25 +41,26 @@ public class OtpImpl{
 
    
     @Transactional(propagation = Propagation.REQUIRED)
-    public void sendOtp(OtpReq req) {
-        String email = req.getEmail().trim().toLowerCase();  // Normalize the email
+    public String sendOtp(OtpReq req) {
+        // String email = req.getEmail().trim().toLowerCase();  // Normalize the email
 
         try {
             // Clean up expired OTPs before sending a new one
-            otpVerificationRepository.deleteAllByEmailAndVerifiedFalse(email);
+            otpVerificationRepository.deleteAllByEmailAndVerifiedFalse(req.getEmail());
 
             String otp = generateOtp();
             OtpVerification otpEntity = new OtpVerification();
-            otpEntity.setEmail(email);
+            otpEntity.setEmail(req.getEmail());
             otpEntity.setOtpCode(otp);
             otpEntity.setCreatedAt(LocalDateTime.now());
             otpEntity.setExpiresAt(LocalDateTime.now().plusMinutes(OTP_EXPIRY_MINUTES));
 
             OtpVerification saved = otpVerificationRepository.save(otpEntity);
             log.info("Saved OTP [{}] for email: {}", saved.getOtpCode(), saved.getEmail());
-            sendOtpEmail(email, otp);
+            // sendOtpEmail(email, otp);
+             return otp;
         } catch (Exception e) {
-            log.info("Error sending OTP for email: {}: {}", email, e.getMessage(), e);
+            log.info("Error sending OTP for email: {}: {}", req.getEmail(), e.getMessage(), e);
             throw new RuntimeException("Error sending OTP", e);
         }
     }
@@ -87,7 +88,7 @@ public class OtpImpl{
             log.info("OTP verified for email: {}", email);
 
             // Send verified email success message
-            sendVerificationSuccessEmail(email);
+            // sendVerificationSuccessEmail(email);
 
             log.info("OTP verified successfully for email: {}", email);
             return email;
