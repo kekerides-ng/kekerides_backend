@@ -46,12 +46,6 @@ public class User extends BaseEntity {
     private Set<PhoneNumber> phoneNumbers = new LinkedHashSet<>();
 
 
-    // @Builder.Default
-    // @ToString.Exclude
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY)
-    // private Set<BankAccount> bankAccounts = new HashSet<>();
-
-
     @Builder.Default
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
