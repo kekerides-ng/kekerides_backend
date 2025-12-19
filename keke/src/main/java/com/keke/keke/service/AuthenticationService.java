@@ -11,8 +11,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.stereotype.Service;
-
-import com.keke.keke.dao.entity.PhoneNumber;
 import com.keke.keke.dao.entity.SignupRequest;
 import com.keke.keke.dao.entity.User;
 import com.keke.keke.dao.repository.RoleRepository;
