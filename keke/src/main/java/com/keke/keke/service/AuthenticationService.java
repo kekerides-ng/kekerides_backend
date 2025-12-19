@@ -217,10 +217,13 @@ public class AuthenticationService {
                 .email(signup.getEmail())
                 .username(signup.getUsername())
                 .password(signup.getPassword()) 
+                .active(true)
+                .phoneNumbers(signup.getPhoneNumber())
+                // .roles(roleRepository.findDefaultRoles())
                 .build();
 
-        newUser.addPhoneNumber(new PhoneNumber(signup.getPhoneNumber()));
-        newUser.addRole(roleRepository.findDefaultRoles());
+        // newUser.addPhoneNumber(new PhoneNumber(signup.getPhoneNumber()));
+        // newUser.addRole(roleRepository.findDefaultRoles());
 
         return userRepository.save(newUser);
     }

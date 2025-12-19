@@ -1,7 +1,12 @@
 package com.keke.keke.dao.entity;
 
+import com.keke.keke.constant.VehicleType;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,22 +16,28 @@ import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Entity
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
+@Entity
 @DiscriminatorValue("rider")
-public class Rider extends User{
+public class Rider extends User {
 
+    @Column(name = "license_number", nullable = false, unique = true)
     private String licenseNumber;
 
-    private String vehicleType;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "vehicle_type", nullable = false)
+    private VehicleType vehicleType;
 
+    @Column(name = "vehicle_plate_number", nullable = false, unique = true)
     private String vehiclePlateNumber;
 
+    @Column(name = "insurance_details")
     private String insuranceDetails;
 
-    private String routeLocation;
-
+    @Column(name = "is_available")
+    private boolean available;
 }
+

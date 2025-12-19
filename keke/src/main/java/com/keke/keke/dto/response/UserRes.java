@@ -1,16 +1,11 @@
 package com.keke.keke.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.keke.keke.dao.entity.PhoneNumber;
 import com.keke.keke.dao.entity.User;
-
 import lombok.Data;
-import org.springframework.util.CollectionUtils;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Set;
-import java.util.stream.Collectors;
+
 
 /**
  * DTO for {@link User}
@@ -28,7 +23,7 @@ public class UserRes implements Serializable {
     private String email;
     private String firstname;
     private String lastname;
-    private Set<PhoneNumberDto> phoneNumbers;
+    private String phoneNumbers;
     private boolean active;
 
 
@@ -40,15 +35,15 @@ public class UserRes implements Serializable {
         this.createdOn = user.getCreatedOn();
         this.updatedOn = user.getUpdatedOn();
         this.active = user.isActive();
-        this.phoneNumbers = mapPhoneNumbers(user.getPhoneNumbers());
+        this.phoneNumbers = user.getPhoneNumbers();
     }
 
-    private static Set<PhoneNumberDto> mapPhoneNumbers(Set<PhoneNumber> phoneNumbers) {
-        if (CollectionUtils.isEmpty(phoneNumbers)) {
-            return Collections.emptySet();
-        }
-        return phoneNumbers.stream()
-                .map(PhoneNumberDto::new)
-                .collect(Collectors.toUnmodifiableSet());
-    }
+    // private static Set<PhoneNumberDto> mapPhoneNumbers(Set<PhoneNumber> phoneNumbers) {
+    //     if (CollectionUtils.isEmpty(phoneNumbers)) {
+    //         return Collections.emptySet();
+    //     }
+    //     return phoneNumbers.stream()
+    //             .map(PhoneNumberDto::new)
+    //             .collect(Collectors.toUnmodifiableSet());
+    // }
 }

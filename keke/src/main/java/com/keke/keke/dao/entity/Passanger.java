@@ -1,5 +1,7 @@
 package com.keke.keke.dao.entity;
 
+import java.math.BigDecimal;
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -19,11 +21,6 @@ import lombok.experimental.SuperBuilder;
 @DiscriminatorValue("passanger")
 public class Passanger extends User {
 
-    private String pickUpLocation;
-
-    private String dropOffLocation;
-
-    private String pickUpTime;
-
-    private String dropOffTime;
+    @Column(name = "travel_balance")
+    private BigDecimal balance;
 }

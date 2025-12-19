@@ -40,10 +40,10 @@ public class User extends BaseEntity {
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastname;
 
-    @Builder.Default
-    @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY)
-    private Set<PhoneNumber> phoneNumbers = new LinkedHashSet<>();
+    // @Builder.Default
+    // @ToString.Exclude
+    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY)
+    private String phoneNumbers;
 
 
     @Builder.Default
@@ -65,31 +65,31 @@ public class User extends BaseEntity {
     private boolean active = true;
 
 
-    public void addPhoneNumber(PhoneNumber phoneNumber) {
-        phoneNumbers.add(phoneNumber);
-        phoneNumber.setUser(this);
-    }
+    // public void addPhoneNumber(PhoneNumber phoneNumber) {
+    //     phoneNumbers.add(phoneNumber);
+    //     phoneNumber.setUser(this);
+    // }
 
-    public void removePhoneNumber(PhoneNumber phoneNumber) {
-        phoneNumbers.remove(phoneNumber);
-        phoneNumber.setUser(null);
-    }
+    // public void removePhoneNumber(PhoneNumber phoneNumber) {
+    //     phoneNumbers.remove(phoneNumber);
+    //     phoneNumber.setUser(null);
+    // }
 
-    public void addRole(Set<Role> newRoles) {
-        this.roles.addAll(newRoles);
-    }
+    //     this.roles.addAll(newRoles);
+    // }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-        return Objects.equals(super.getId(), user.getId()) &&
-                Objects.equals(username, user.username);
-    }
+    // @Override
+    // public boolean equals(Object o) {
+    //     if (this == o) return true;
+    //     if (!(o instanceof User user)) return false;
+    //     return Objects.equals(super.getId(), user.getId()) &&
+    //             Objects.equals(username, user.username);
+    // }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.getId(), username);
-    }
+    // @Override
+    // public int hashCode() {
+    //     return Objects.hash(super.getId(), username);
+    // }  public void addRole(Set<Role> newRoles) {
+  
 }
 
